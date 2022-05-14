@@ -8,8 +8,38 @@
 }
 
 #menu {
+    position: relative;
+    top: 9.2rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
+}
+
+.buttons {
+    width: 9.2rem;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 2.2rem;
+}
+
+/* Página do Jogo*/
+
+img {
+    width: 22rem;
+}
+
+#tabuleiro {
+    display: flex;
+    justify-content: center;
+    border: 5px solid;
+}
+
+input {
+    width: 4rem;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid;
+    margin: 2px;
+    font-size: 200%;
+    text-align: center;
 }
