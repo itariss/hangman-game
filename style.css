@@ -24,14 +24,10 @@
 
 /* Página do Jogo*/
 
-img {
-    width: 22rem;
-}
-
 #tabuleiro {
+    background-color: aliceblue;
     display: flex;
     justify-content: center;
-    border: 5px solid;
 }
 
 input {
@@ -42,4 +38,16 @@ input {
     margin: 2px;
     font-size: 200%;
     text-align: center;
+}
+
+#letras-erradas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2.2rem;
+}
+
+#letras-erradas p {
+    font-size: 150%;
+    margin: 0.4rem;
 }
