@@ -2,12 +2,9 @@ const tabuleiro = document.getElementById("tabuleiro");
 const letrasErradas = document.getElementById("letras-erradas");
 const re = new RegExp("^[a-z/s ]+$");
 
-<<<<<<< HEAD
-=======
 const canvas = document.querySelector("#canvas");
 const pencil = canvas.getContext("2d");
 
->>>>>>> ed7a51b (working with canvas)
 let palavrasLvFacil = ["azul", "alura", "oracle"];
 
 let sorteio = Math.floor(Math.random() * palavrasLvFacil.length);
@@ -43,8 +40,6 @@ window.addEventListener("keydown", () => {
 
     acertou ? acertos++ : mostraLetrasErradas(tecla);
 
-<<<<<<< HEAD
-=======
     if (erros.length == 1) {
         console.log("errou");
         desenhaForca(base);
@@ -62,7 +57,6 @@ window.addEventListener("keydown", () => {
         desenhaForca(body);
     }
 
->>>>>>> ed7a51b (working with canvas)
     if (acertos == letras.length) {
         alert("Venceu!");
     }
@@ -80,8 +74,6 @@ function mostraLetrasErradas(tecla) {
 }
 
 function mostraTecla(tecla) {}
-<<<<<<< HEAD
-=======
 
 let base = [300, 280, 120, 5];
 let column = [365, 50, 5, 235];
@@ -111,4 +103,3 @@ function desenhaForca(piece) {
         pencil.stroke();
     }
 }
->>>>>>> ed7a51b (working with canvas)
