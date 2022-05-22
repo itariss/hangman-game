@@ -7,11 +7,13 @@
         <link rel="stylesheet" href="style.css" />
         <title>Forca - Jogo</title>
     </head>
-    <body>
-        <canvas id="canvas" width="600" height="300"></canvas>
+    <body id="game">
+        <div class="screen">
+            <canvas id="canvas" width="600" height="300"></canvas>
+        </div>
 
         <div id="tabuleiro"></div>
-        <div id="letras-erradas"></div>
+        <div id="letras-erradas"><p id="placeholder">?</p></div>
         <script src="script.js"></script>
     </body>
 </html>
