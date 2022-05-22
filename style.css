@@ -1,53 +1,170 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: "Indie Flower", cursive;
 }
 
 :root {
     font-size: 100%;
+    --text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff,
+        1px 1px #fff;
 }
 
-#menu {
-    position: relative;
-    top: 9.2rem;
+svg {
     display: flex;
-    flex-direction: column;
+    width: 100%;
+    height: 25vh;
+}
+
+#game {
+    display: table;
+    width: 100%;
+    height: 100vh;
+    background: url(/game-background.jpg) 50% 50%;
+    background-size: cover;
+}
+
+body {
+    display: table;
+    width: 100%;
+    height: 100vh;
+    background: url(/landing-background.jpg) 50% 50%;
+    background-size: cover;
+}
+
+path {
+    fill: transparent;
+}
+
+text {
+    font-weight: 1000;
+    font-size: 300%;
+    text-shadow: var(--text-shadow);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 1.2rem;
+    text-shadow: var(--text-shadow);
+    animation: bounceInDown;
+    animation-duration: 3s;
+}
+
+.screen {
+    width: 100%;
+    margin: 2rem auto;
+    display: flex;
+    flex-shrink: 1;
+    justify-content: center;
     align-items: center;
 }
 
-.buttons {
-    width: 9.2rem;
+#canvas {
+    display: flex;
+    width: 50%;
+    height: 35vh;
+    flex-shrink: 2;
+    max-width: 1200px;
+    max-height: 800px;
+    min-width: 280px;
+    min-height: 250px;
     border-radius: 10px;
-    padding: 1.5rem;
-    margin: 2.2rem;
+    background-color: rgba(139, 91, 46, 0.823);
+    box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.5);
+}
+
+#menu {
+    width: 25rem;
+    min-width: fit-content;
+    height: 50vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 2;
+    align-items: center;
+    border-radius: 10px;
+    background-size: contain;
+    background-color: rgba(139, 91, 46, 0.823);
+    box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.5);
+    animation: bounceInRight;
+    animation-duration: 2s;
+}
+
+@media screen and (max-width: 480px) {
+    #menu {
+        width: 70%;
+    }
+
+    body {
+        background-position: 65%;
+    }
+
+    #letras-erradas p {
+        width: 1rem;
+        font-size: 100%;
+    }
+}
+
+.buttons {
+    font-size: 115%;
+    width: 9.2rem;
+    height: 2.2rem;
+    border-radius: 15px;
+    margin: 2.2rem auto;
+    font-weight: 600;
+}
+
+.buttons:hover {
+    cursor: pointer;
 }
 
 /* Página do Jogo*/
 
 #tabuleiro {
-    background-color: aliceblue;
+    width: 50%;
+    margin: 4rem auto;
     display: flex;
+    flex-shrink: 1;
     justify-content: center;
 }
 
 input {
+    display: flex;
+    flex-shrink: 1;
     width: 4rem;
+    min-width: 2rem;
+    color: red;
     border: none;
     outline: none;
-    border-bottom: 1px solid;
+    border-bottom: 5px solid black;
     margin: 2px;
     font-size: 200%;
+    font-weight: 800;
     text-align: center;
 }
 
 #letras-erradas {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin: 2.2rem;
+    max-width: 60%;
+    margin: 0.8rem auto;
 }
 
 #letras-erradas p {
     font-size: 150%;
+    font-weight: 600;
     margin: 0.4rem;
+    width: 2rem;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid gold;
+    box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.5);
+    background-color: rgba(233, 229, 0, 0.9);
+}
+
+#placeholder {
+    display: none;
 }
