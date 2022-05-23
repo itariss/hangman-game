@@ -57,6 +57,10 @@ window.addEventListener("keydown", () => {
 
         if (erros.length == 3) {
             desenhaForca(head);
+            headDone = true;
+            desenhaForca(leftEye);
+            desenhaForca(rightEye);
+            desenhaForca(nose);
         }
         if (erros.length == 4) {
             desenhaForca(body);
@@ -101,6 +105,10 @@ let column = [385, 50, 5, 235];
 let columExtend = [385, 50, -80, 5];
 let columExtend2 = [305, 50, 5, 20];
 let head = [307, 90, 20, 0, 2 * Math.PI];
+let headDone = false;
+let leftEye = [299, 87, 5, 0, 2 * Math.PI];
+let rightEye = [315, 87, 5, 0, 2 * Math.PI];
+let nose = [307, 95, 1, 0, 2 * Math.PI];
 let body = [305, 110, 4, 60];
 let leftLeg = [307, 170, 275, 235];
 let rightLeg = [307, 170, 335, 235];
@@ -127,7 +135,11 @@ function desenhaForca(piece) {
             pieceCoordinate[3],
             pieceCoordinate[4]
         );
-        pencil.stroke();
+        if (headDone) {
+            pencil.fill();
+        } else {
+            pencil.stroke();
+        }
     } else if (erros.length > 4) {
         pencil.lineWidth = 3;
 
