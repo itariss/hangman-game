@@ -55,7 +55,7 @@ h2 {
     width: 100%;
     margin: 2rem auto;
     display: flex;
-    flex-shrink: 1;
+    flex-shrink: 2;
     justify-content: center;
     align-items: center;
 }
@@ -70,6 +70,7 @@ h2 {
     min-width: 280px;
     min-height: 250px;
     border-radius: 10px;
+    margin: 0 auto;
     background-color: rgba(139, 91, 46, 0.823);
     box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.5);
 }
@@ -83,6 +84,7 @@ h2 {
     flex-direction: column;
     flex-shrink: 2;
     align-items: center;
+    justify-content: center;
     border-radius: 10px;
     background-size: contain;
     background-color: rgba(139, 91, 46, 0.823);
@@ -103,6 +105,10 @@ h2 {
     #letras-erradas p {
         width: 1rem;
         font-size: 100%;
+    }
+
+    #canvas {
+        width: 40%;
     }
 }
 
@@ -161,6 +167,8 @@ input {
     text-align: center;
     border-radius: 50%;
     border: 1px solid gold;
+    animation: bounceInDown;
+    animation-duration: 2s;
     box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.5);
     background-color: rgba(233, 229, 0, 0.9);
 }
