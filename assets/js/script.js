@@ -5,6 +5,7 @@ const mensagem = document.querySelector("#mensagem");
 const msgFinal = document.querySelector("#msg");
 const canvas = document.querySelector("#canvas");
 const pencil = canvas.getContext("2d");
+const mostraDica = document.querySelector("#dica");
 
 const re = new RegExp("^[a-zç/s]+$");
 
@@ -59,6 +60,15 @@ let acertos = [];
 window.addEventListener("click", onKeyPress);
 
 window.addEventListener("keydown", onKeyDown);
+
+dica.addEventListener("click", () => {
+    criaDica = document.createElement("p");
+    criaDica.innerHTML = `Dica: ${palavras[sorteio].dica}`;
+    console.log(palavras[sorteio].dica);
+    mostraDica.innerHTML = ``;
+
+    mostraDica.appendChild(criaDica);
+});
 
 function mainFunction(tecla) {
     let acertou = false;
