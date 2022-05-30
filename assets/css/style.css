@@ -117,6 +117,21 @@ h2 {
     animation-duration: 1s;
 }
 
+#dica {
+    display: flex;
+    font-size: 140%;
+    justify-content: center;
+    color: aliceblue;
+    transition: 500ms;
+}
+
+#dica:hover {
+    color: darkslateblue;
+    cursor: pointer;
+    animation: jello;
+    animation-duration: 1s;
+}
+
 #tabuleiro {
     width: 50%;
     margin: 4rem auto;
