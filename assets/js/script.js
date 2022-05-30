@@ -1,9 +1,12 @@
 const tabuleiro = document.getElementById("tabuleiro");
 const letrasErradas = document.getElementById("letras-erradas");
-const re = new RegExp("^[a-zç/s]+$");
-
+const janelaVenceuPerdeu = document.querySelector("#venceu-perdeu");
+const mensagem = document.querySelector("#mensagem");
+const msgFinal = document.querySelector("#msg");
 const canvas = document.querySelector("#canvas");
 const pencil = canvas.getContext("2d");
+
+const re = new RegExp("^[a-zç/s]+$");
 
 const sounds = [
     new Audio("/assets/audio/beep-10.mp3"),
@@ -13,9 +16,6 @@ const sounds = [
     new Audio("/assets/audio/winning.wav"),
     new Audio("/assets/audio/button-30.mp3")
 ];
-
-const janelaVenceuPerdeu = document.querySelector("#venceu-perdeu");
-const mensagem = document.querySelector("#mensagem");
 
 const Keyboard = window.SimpleKeyboard.default;
 
@@ -123,6 +123,7 @@ function mainFunction(tecla) {
         setTimeout("playSounds(sounds[4])", 1000);
     }
     if (erros.length == 6) {
+        mostraPalavra();
         window.removeEventListener("click", onKeyPress, false);
         window.removeEventListener("keydown", onKeyDown, false);
         setTimeout("mostraJanela(`perdeu`)", 1000);
@@ -161,9 +162,19 @@ function mostraJanela(final) {
     mensagem.innerHTML = `Você ${final}!`;
 }
 
+function mostraPalavra() {
+    palavraCorreta = document.createElement("p");
+    palavraCorreta.innerHTML = `A palavra era: ${palavraSorteada.toUpperCase()}`;
+    palavraCorreta.classList.add("palavra-revelada");
+    console.log(palavraCorreta.innerHTML);
+    msgFinal.append(palavraCorreta);
+}
+
 function playSounds(sounds) {
     sounds.play();
 }
+
+/* Coordenadas para o canvas*/
 
 let base = [320, 280, 120, 5];
 let column = [385, 50, 5, 235];
