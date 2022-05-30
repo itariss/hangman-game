@@ -1,0 +1,338 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Righteous", cursive;
+}
+
+:root {
+    font-size: 100%;
+    --text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff,
+        1px 1px #fff;
+}
+
+/* Pagina Incial - Menu*/
+
+svg {
+    display: flex;
+    width: 100%;
+    height: 25vh;
+}
+
+body {
+    overflow: hidden;
+    display: table;
+    width: 100%;
+    height: 100vh;
+    background: url(/assets/img/landing-page.jpg);
+    background-size: cover;
+}
+
+path {
+    fill: transparent;
+}
+
+text {
+    text-align: center;
+    font-weight: 1000;
+    font-size: 290%;
+    text-shadow: var(--text-shadow);
+}
+
+h2 {
+    font-size: 200%;
+    text-align: center;
+    margin-bottom: 1.2rem;
+    text-shadow: var(--text-shadow);
+    animation: bounceInDown;
+    animation-duration: 3s;
+}
+
+#menu {
+    width: 40%;
+    min-width: fit-content;
+    height: 50vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background-color: rgba(109, 78, 10, 0.5);
+    animation: flipInX;
+    animation-duration: 2s;
+}
+
+.buttons {
+    width: 25vw;
+    height: 6vh;
+    font-size: 115%;
+    border-radius: 20px;
+    margin: 2.2rem auto;
+    font-weight: 600;
+    opacity: 0.8;
+    transition: 500ms;
+}
+
+.buttons:hover {
+    cursor: pointer;
+    background-color: gold;
+    opacity: 1;
+}
+
+#jogo {
+    display: none;
+}
+
+#nova-palavra {
+    display: none;
+}
+
+/* Página do Jogo*/
+
+.screen {
+    width: 100%;
+    margin: 2rem auto;
+    display: flex;
+    flex-shrink: 2;
+    justify-content: center;
+    align-items: center;
+}
+
+#canvas {
+    display: flex;
+    width: 50%;
+    height: 40vh;
+    flex-shrink: 2;
+    max-width: 1200px;
+    max-height: 800px;
+    min-width: 280px;
+    min-height: 250px;
+    border-radius: 10px;
+    margin: 0 auto;
+    background-size: cover;
+    background-color: rgba(109, 78, 10, 0.86);
+    box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.5);
+    animation: zoomIn;
+    animation-duration: 1s;
+}
+
+#tabuleiro {
+    width: 50%;
+    margin: 4rem auto;
+    display: flex;
+    flex-shrink: 2;
+    justify-content: center;
+}
+
+input {
+    display: flex;
+    flex-shrink: 3;
+    width: 4rem;
+    min-width: 2rem;
+    color: aliceblue;
+    border: none;
+    outline: none;
+    border-bottom: 5px solid black;
+    margin: 2px;
+    font-size: 200%;
+    font-weight: 800;
+    text-align: center;
+    animation: backInDown;
+    animation-duration: 2.4s;
+}
+
+.input {
+    visibility: hidden;
+}
+
+#letras-erradas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 80%;
+    margin: 0.8rem auto;
+}
+
+#letras-erradas p {
+    font-size: 150%;
+    font-weight: 600;
+    margin: 0.4rem;
+    width: 2rem;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid gold;
+    animation: bounceInDown;
+    animation-duration: 1s;
+    transition: 500ms;
+    box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.5);
+    background-color: rgba(233, 229, 0, 0.9);
+}
+
+#placeholder {
+    visibility: hidden;
+}
+
+#janela-mensagem {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-shrink: 3;
+    bottom: 80%;
+}
+
+#venceu-perdeu {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: center;
+    width: 40%;
+    height: 60vh;
+    border-radius: 10px;
+    animation: tada;
+    animation-duration: 1.5s;
+    transition: 2s;
+}
+
+#msg {
+    order: -1;
+    flex: 1 0 100%;
+    margin-bottom: -5rem;
+}
+
+.perdeu {
+    background: url(/assets/img/perdeu.jpg) 50% 50%;
+    background-size: cover;
+}
+.venceu {
+    background: url(/assets/img/venceu.jpg) 50% 50%;
+    background-size: cover;
+}
+
+.modal-btns {
+    width: 40%;
+    height: 4vh;
+    opacity: 0.5;
+    margin-bottom: 1rem;
+    border-radius: 15px;
+    padding: 0.2rem;
+}
+
+.modal-btns:hover {
+    cursor: pointer;
+    background-color: gold;
+}
+
+.simple-keyboard {
+    display: none;
+}
+
+/* Página Adiciona Palavra */
+
+#adiciona-palavra {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 40%;
+}
+
+#campo-adiciona {
+    color: blueviolet;
+    text-align: left;
+    font-size: 120%;
+    width: 50%;
+    height: 6vh;
+    border: 2px solid black;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding-left: 16px;
+}
+
+#add {
+    height: 6vh;
+    width: 4rem;
+    border-left: 5px dashed black;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-left: -5px;
+    background-color: darkslateblue;
+    color: #fff;
+}
+
+#add:hover {
+    cursor: pointer;
+    background-color: gold;
+    color: black;
+    transition: 300ms;
+}
+
+.flex-container {
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.flex-container .buttons {
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+/*Responsivo*/
+
+@media screen and (max-width: 768px) {
+    body {
+        overflow: auto;
+        background-position: 65%;
+    }
+
+    .simple-keyboard {
+        display: inline-block;
+        position: sticky;
+        top: 100vh;
+        width: 100vw;
+    }
+    #venceu-perdeu {
+        width: 75%;
+    }
+
+    #canvas {
+        width: 90%;
+    }
+
+    .modal-btns {
+        width: 65%;
+        height: 5vh;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #menu {
+        width: 70%;
+    }
+
+    .buttons {
+        width: 12rem;
+    }
+
+    #canvas {
+        width: 90%;
+    }
+
+    input {
+        margin: -1rem 2px;
+    }
+
+    #letras-erradas {
+        margin: -1rem auto;
+        transform: scale(0.8);
+    }
+
+    #msg {
+        font-size: 200%;
+    }
+}
