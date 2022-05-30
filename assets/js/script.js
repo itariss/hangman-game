@@ -6,6 +6,8 @@ const msgFinal = document.querySelector("#msg");
 const canvas = document.querySelector("#canvas");
 const pencil = canvas.getContext("2d");
 const mostraDica = document.querySelector("#dica");
+const mostraTecladoVirtural = document.querySelector("#teclado");
+const tecladoVirtual = document.querySelector("#teclado-virtual");
 
 const re = new RegExp("^[a-zç/s]+$");
 
@@ -56,19 +58,43 @@ for (let i = 0; i < letras.length; i++) {
 }
 let erros = [];
 let acertos = [];
+let noDisplayKeyboard = true;
 
-window.addEventListener("click", onKeyPress);
+tecladoVirtual.addEventListener("click", onKeyPress);
 
 window.addEventListener("keydown", onKeyDown);
 
 dica.addEventListener("click", () => {
     criaDica = document.createElement("p");
     criaDica.innerHTML = `Dica: ${palavras[sorteio].dica}`;
-    console.log(palavras[sorteio].dica);
     mostraDica.innerHTML = ``;
 
     mostraDica.appendChild(criaDica);
 });
+teclado.addEventListener("click", () => {
+    toogleDisplayKeyboard();
+});
+
+function toogleDisplayKeyboard() {
+    if (noDisplayKeyboard) {
+        tecladoVirtual.classList.remove("animate__slideOutDown");
+        tecladoVirtual.classList.add("animate__slideInUp");
+        tecladoVirtual.style.display = "inline-block";
+        tecladoVirtual.addEventListener("animationend", () => {
+            tecladoVirtual.style.display = "inline-block";
+        });
+        noDisplayKeyboard = false;
+        return noDisplayKeyboard;
+    } else if (!noDisplayKeyboard) {
+        tecladoVirtual.classList.remove("animate__slideInUp");
+        tecladoVirtual.classList.add("animate__slideOutDown");
+        tecladoVirtual.addEventListener("animationend", () => {
+            tecladoVirtual.style.display = "none";
+        });
+        noDisplayKeyboard = true;
+        return noDisplayKeyboard;
+    }
+}
 
 function mainFunction(tecla) {
     let acertou = false;
@@ -176,7 +202,6 @@ function mostraPalavra() {
     palavraCorreta = document.createElement("p");
     palavraCorreta.innerHTML = `A palavra era: ${palavraSorteada.toUpperCase()}`;
     palavraCorreta.classList.add("palavra-revelada");
-    console.log(palavraCorreta.innerHTML);
     msgFinal.append(palavraCorreta);
 }
 

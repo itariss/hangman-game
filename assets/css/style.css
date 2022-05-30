@@ -117,15 +117,22 @@ h2 {
     animation-duration: 1s;
 }
 
-#dica {
+#dica-teclado {
+    margin: 0 auto;
+    width: 45%;
     display: flex;
     font-size: 140%;
-    justify-content: center;
+    justify-content: space-between;
     color: aliceblue;
-    transition: 500ms;
+    align-items: center;
 }
 
-#dica:hover {
+#teclado {
+    font-size: 150%;
+}
+
+#dica:hover,
+#teclado:hover {
     color: darkslateblue;
     cursor: pointer;
     animation: jello;
@@ -134,7 +141,7 @@ h2 {
 
 #tabuleiro {
     width: 50%;
-    margin: 4rem auto;
+    margin: 2rem auto;
     display: flex;
     flex-shrink: 2;
     justify-content: center;
@@ -248,6 +255,14 @@ input {
 
 .simple-keyboard {
     display: none;
+    width: 50%;
+    margin-top: -4rem;
+    text-align: center;
+    transition: 700ms;
+    position: sticky;
+    top: 100vh;
+    width: 100vw;
+    animation-duration: 1.4s;
 }
 
 /* Página Adiciona Palavra */
