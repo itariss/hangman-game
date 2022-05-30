@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Blaka&family=Indie+Flower&family=Macondo&family=Righteous&display=swap"
+            rel="stylesheet"
+        />
+        <title>Batalha Davy Back - Nova Palavra</title>
+    </head>
+    <body>
+        <svg viewBox="0 0 500 150">
+            <path
+                id="curve"
+                d="M73.2,148.6c4-6.1,65.5-96.8,178.6-95.6c111.3,1.2,170.8,90.3,175.1,97"
+            />
+            <text>
+                <textPath xlink:href="#curve">Batalha Davy Back</textPath>
+            </text>
+        </svg>
+        <h2>Jogo da Forca</h2>
+        <form id="adiciona-palavra">
+            <input
+                id="campo-adiciona"
+                name="palavra"
+                type="text"
+                autocomplete="off"
+                placeholder="Digite palavra com no máximo 8 letras..."
+                pattern="^[A-ZÇa-zç]{3,8}"
+                required
+            />
+            <button id="add" name="palavra" type="submit">OK</button>
+        </form>
+        <div class="flex-container">
+            <a href="/assets/html/game.html">
+                <button id="new-game" class="buttons">Novo Jogo</button>
+            </a>
+            <a href="index.html">
+                <button class="buttons">Início</button>
+            </a>
+        </div>
+        <script src="/assets/js/new.js"></script>
+    </body>
+</html>

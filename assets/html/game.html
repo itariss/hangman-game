@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/css/index.css"
+        />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Blaka&family=Indie+Flower&family=Macondo&family=Righteous&display=swap"
+            rel="stylesheet"
+        />
+        <title>Forca - Jogo</title>
+    </head>
+    <body id="game">
+        <div class="screen">
+            <canvas id="canvas" width="600" height="300"></canvas>
+        </div>
+
+        <div id="tabuleiro"></div>
+        <div id="letras-erradas"><p id="placeholder">?</p></div>
+        <input class="input" />
+        <div class="simple-keyboard"></div>
+
+        <section id="janela-mensagem">
+            <div id="venceu-perdeu">
+                <text id="msg">
+                    <p id="mensagem"></p>
+                </text>
+                <a href="/index.html">
+                    <button class="modal-btns buttons">Menu</button>
+                </a>
+                <a href="game.html">
+                    <button class="modal-btns buttons">Jogar Novamente</button>
+                </a>
+            </div>
+        </section>
+        <script src="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js"></script>
+        <script src="/assets/js/script.js"></script>
+    </body>
+</html>
