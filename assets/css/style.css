@@ -1,14 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Walter+Turncoat&display=swap");
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Righteous", cursive;
+    font-family: "Walter Turncoat", cursive;
 }
 
 :root {
     font-size: 100%;
     --text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff,
         1px 1px #fff;
+    --text-shadow-black: 2px 0 0 rgb(0, 0, 0), -2px 0 0 rgb(0, 0, 0),
+        rgb(0, 0, 0) x 0 rgb(0, 0, 0), 0 -2px 0 rgb(0, 0, 0),
+        1px 1px rgb(0, 0, 0);
 }
 
 /* Pagina Incial - Menu*/
@@ -35,7 +40,7 @@ path {
 text {
     text-align: center;
     font-weight: 1000;
-    font-size: 290%;
+    font-size: 280%;
     text-shadow: var(--text-shadow);
 }
 
@@ -64,28 +69,20 @@ h2 {
 }
 
 .buttons {
-    width: 25vw;
+    width: 20vw;
     height: 6vh;
     font-size: 115%;
     border-radius: 20px;
     margin: 2.2rem auto;
     font-weight: 600;
-    opacity: 0.8;
     transition: 500ms;
+    background-color: goldenrod;
 }
 
 .buttons:hover {
+    background-color: darkslateblue;
+    color: aliceblue;
     cursor: pointer;
-    background-color: gold;
-    opacity: 1;
-}
-
-#jogo {
-    display: none;
-}
-
-#nova-palavra {
-    display: none;
 }
 
 /* Página do Jogo*/
@@ -110,8 +107,7 @@ h2 {
     min-height: 250px;
     border-radius: 10px;
     margin: 0 auto;
-    background-size: cover;
-    background-color: rgba(109, 78, 10, 0.86);
+    background-color: rgba(109, 78, 10, 0.9);
     box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.5);
     animation: zoomIn;
     animation-duration: 1s;
@@ -123,20 +119,54 @@ h2 {
     display: flex;
     font-size: 140%;
     justify-content: space-between;
-    color: aliceblue;
     align-items: center;
+}
+
+#dica {
+    color: darkred;
+    font-weight: 600;
+    text-shadow: var(--text-shadow);
 }
 
 #teclado {
     font-size: 150%;
+    color: aliceblue;
 }
 
-#dica:hover,
-#teclado:hover {
-    color: darkslateblue;
+#dica:hover {
+    color: goldenrod;
     cursor: pointer;
     animation: jello;
     animation-duration: 1s;
+}
+
+#teclado:hover {
+    color: goldenrod;
+    cursor: pointer;
+    animation: jello;
+    animation-delay: 6s;
+    animation-duration: 1s;
+}
+
+#teclado::after {
+    display: none;
+    position: absolute;
+    top: -5px;
+    padding: 5px;
+    border-radius: 20px;
+    padding: 0.4rem;
+    left: calc(100% + 2px);
+    width: 10vw;
+    content: "Para jogar, pressione uma tecla ou clique no ícone para chamar o teclado virtual";
+    font-size: 45%;
+    font-weight: 600;
+    white-space: wrap;
+    background-color: darkslateblue;
+    color: aliceblue;
+}
+
+#teclado:hover::after {
+    display: block;
 }
 
 #tabuleiro {
@@ -152,7 +182,8 @@ input {
     flex-shrink: 3;
     width: 4rem;
     min-width: 2rem;
-    color: aliceblue;
+    color: darkred;
+    text-shadow: var(--text-shadow);
     border: none;
     outline: none;
     border-bottom: 5px solid black;
@@ -222,7 +253,6 @@ input {
 #msg {
     order: -1;
     flex: 1 0 100%;
-    margin-bottom: -4rem;
 }
 
 .palavra-revelada {
@@ -240,17 +270,20 @@ input {
 }
 
 .modal-btns {
-    width: 40%;
-    height: 4vh;
-    opacity: 0.5;
+    width: 100%;
     margin-bottom: 1rem;
-    border-radius: 15px;
-    padding: 0.2rem;
+    border-radius: 20px;
+    padding: 1rem;
+    font-weight: 600;
+    line-height: 0;
+    background-color: gold;
+    transition: 500ms;
 }
 
 .modal-btns:hover {
     cursor: pointer;
-    background-color: gold;
+    background-color: darkslateblue;
+    color: aliceblue;
 }
 
 .simple-keyboard {
@@ -298,6 +331,23 @@ input {
     color: #fff;
 }
 
+#add-tip,
+#add-word {
+    display: none;
+    position: absolute;
+    top: 35%;
+    margin: 1.2rem auto;
+    object-fit: fill;
+    padding: 0.4rem;
+    border-radius: 20px;
+    font-size: 100%;
+    font-weight: 600;
+    background-color: rgba(255, 217, 0, 0.904);
+    color: black;
+    text-align: center;
+    animation-duration: 1s;
+}
+
 #add:hover {
     cursor: pointer;
     background-color: gold;
@@ -309,12 +359,9 @@ input {
     display: flex;
     width: 70%;
     margin: 0 auto;
-    justify-content: center;
-}
-
-.flex-container .buttons {
-    margin-left: 2rem;
-    margin-right: 2rem;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
 }
 
 /*Responsivo*/
