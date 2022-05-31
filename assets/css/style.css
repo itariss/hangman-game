@@ -401,8 +401,13 @@ input {
         width: 12rem;
     }
 
-    #canvas {
+    #canvas,
+    #dica-teclado {
         width: 90%;
+    }
+
+    #teclado {
+        display: none;
     }
 
     input {
