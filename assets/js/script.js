@@ -35,9 +35,16 @@ let palavras = [
     { nome: "azul", dica: "Cor" },
     { nome: "bege", dica: "Cor" },
     { nome: "tesoura", dica: "Objeto" },
-    { nome: "foca", dica: "Animal" },
     { nome: "serpente", dica: "Animal" },
-    { nome: "patinete", dica: "Transporte" }
+    { nome: "navio", dica: "Transporte" },
+    { nome: "laranja", dica: "Fruta" },
+    { nome: "tomate", dica: "Fruta" },
+    { nome: "jacare", dica: "Animal" },
+    { nome: "coruja", dica: "Animal" },
+    { nome: "skate", dica: "Transporte" },
+    { nome: "calopsita", dica: "Animal" },
+    { nome: "arroz", dica: "Comida" },
+    { nome: "luneta", dica: "Objeto" }
 ];
 
 if (novasPalavras != undefined) {
