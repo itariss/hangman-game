@@ -29,7 +29,7 @@ body {
     display: table;
     width: 100%;
     height: 100vh;
-    background: url(assets/img/landing-page.jpg);
+    background: url(/assets/img/landing-page.jpg);
     background-size: cover;
 }
 
