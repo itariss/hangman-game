@@ -181,7 +181,6 @@ input {
     display: flex;
     flex-shrink: 3;
     width: 4rem;
-    min-width: 2rem;
     color: darkred;
     text-shadow: var(--text-shadow);
     border: none;
@@ -205,13 +204,13 @@ input {
     justify-content: center;
     align-items: center;
     max-width: 80%;
-    margin: 0.8rem auto;
 }
 
 #letras-erradas p {
     font-size: 150%;
     font-weight: 600;
     margin: 0.4rem;
+    margin-top: 1.8rem;
     width: 2rem;
     text-align: center;
     border-radius: 50%;
@@ -257,7 +256,7 @@ input {
 
 .palavra-revelada {
     font-size: 50%;
-    color: darkslateblue;
+    color: darkred;
 }
 
 .perdeu {
@@ -270,7 +269,7 @@ input {
 }
 
 .modal-btns {
-    width: 100%;
+    width: 10vh;
     margin-bottom: 1rem;
     border-radius: 20px;
     padding: 1rem;
@@ -386,6 +385,10 @@ input {
         width: 90%;
     }
 
+    #tabuleiro {
+        width: 100%;
+    }
+
     .modal-btns {
         width: 65%;
         height: 5vh;
@@ -406,12 +409,18 @@ input {
         width: 90%;
     }
 
+    #dica {
+        font-size: 70%;
+    }
+
     #teclado {
         display: none;
     }
 
     input {
         margin: -1rem 2px;
+        width: 2rem;
+        height: 6vh;
     }
 
     #letras-erradas {
