@@ -12,12 +12,12 @@ const tecladoVirtual = document.querySelector("#teclado-virtual");
 const re = new RegExp("^[a-zç/s]+$");
 
 const sounds = [
-    new Audio("/assets/audio/beep-10.mp3"),
-    new Audio("/assets/audio/coin-drop-1.mp3"),
-    new Audio("/assets/audio/fail-trombone-01.mp3"),
-    new Audio("/assets/audio/magic-chime-01.mp3"),
-    new Audio("/assets/audio/winning.wav"),
-    new Audio("/assets/audio/button-30.mp3")
+    new Audio("../audio/beep-10.mp3"),
+    new Audio("../audio/coin-drop-1.mp3"),
+    new Audio("../audio/fail-trombone-01.mp3"),
+    new Audio("../audio/magic-chime-01.mp3"),
+    new Audio("../audio/winning.wav"),
+    new Audio("../audio/button-30.mp3")
 ];
 
 const Keyboard = window.SimpleKeyboard.default;
@@ -44,8 +44,6 @@ if (novasPalavras != undefined) {
     palavras = palavras.concat(novasPalavras);
 }
 
-console.log(palavras);
-
 let sorteio = Math.floor(Math.random() * palavras.length);
 let palavraSorteada = palavras[sorteio].nome;
 let letras = palavraSorteada.split("");
@@ -54,7 +52,6 @@ for (let i = 0; i < letras.length; i++) {
     let input = document.createElement("input");
     input.disabled = true;
     tabuleiro.appendChild(input);
-    console.log(letras[i]);
 }
 let erros = [];
 let acertos = [];

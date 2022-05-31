@@ -25,8 +25,6 @@ send.onclick = event => {
             addWord.classList.remove("animate__lightSpeedInRight");
             event.preventDefault();
             novaPalavra.nome = addField.value;
-            console.log(novasPalavras);
-            console.log(addTip);
             addTip.classList.add("animate__lightSpeedInRight");
             addTip.style.display = "flex";
             addField.value = "";
@@ -38,8 +36,6 @@ send.onclick = event => {
             event.preventDefault();
             novaPalavra.dica = addField.value;
             novasPalavras.push(novaPalavra);
-            console.log(novasPalavras);
-            console.log(addTip);
             addWord.classList.add("animate__lightSpeedInRight");
             addWord.style.display = "flex";
             addField.value = "";
