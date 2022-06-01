@@ -6,7 +6,7 @@
 
 #### :sparkler: Links:
 
-#### [Github Pages]([Forca - Menu](https://itariss.github.io/one-challenge2/))
+#### [Github Pages](https://itariss.github.io/one-challenge2/)
 
 #### [Netlify](https://lustrous-melomakarona-9c2249.netlify.app/)
 
