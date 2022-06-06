@@ -9,6 +9,7 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
         />
+        <link rel="icon" type="image/png" href="assets/img/icon.png" />
         <title>Forca - Menu</title>
     </head>
     <body>
@@ -23,12 +24,17 @@
         </svg>
         <h2>Jogo da Forca</h2>
         <div id="menu">
-            <a href="assets/html/game.html">
-                <button id="to-game" class="buttons">Novo Jogo</button>
+            <a href="assets/html/game.html" id="to-game" class="buttons">
+                Novo Jogo
             </a>
-            <a href="assets/html/new.html">
-                <button class="buttons">Nova Palavra</button>
-            </a>
+            <a href="assets/html/new.html" class="buttons"> Nova Palavra </a>
+            <label for="dificult"></label>
+            <select id="dificult">
+                <option>Fácil</option>
+                <option selected>Médio</option>
+                <option>Difícil</option>
+            </select>
         </div>
+        <script src="assets/js/index.js"></script>
     </body>
 </html>
