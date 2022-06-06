@@ -32,9 +32,9 @@ Esse projeto é  resultado do segundo desafio da trilha Iniciante em Programaç�
 
 #### Recursos:
 
-[Áudios]([Free Sound Effects | SoundJay.com](https://www.soundjay.com/index.html))
+[Áudios](https://www.soundjay.com/index.html)
 
-[Imagens]([Upklyak | Freepik](https://www.freepik.com/author/upklyak))
+[Imagens](https://www.freepik.com/author/upklyak)
 
 #### Página Inicial - Menu
 
