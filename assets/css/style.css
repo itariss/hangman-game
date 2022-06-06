@@ -69,13 +69,20 @@ h2 {
 }
 
 .buttons {
+    display: flex;
     width: 20vw;
     height: 6vh;
     font-size: 115%;
     border-radius: 20px;
+    border: 1px black solid;
     margin: 2.2rem auto;
     font-weight: 600;
     transition: 500ms;
+    text-decoration: none;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: black;
     background-color: goldenrod;
 }
 
@@ -83,6 +90,13 @@ h2 {
     background-color: darkslateblue;
     color: aliceblue;
     cursor: pointer;
+}
+
+#dificult {
+    background-color: rgba(109, 78, 10, 0.9);
+    border-radius: 20px;
+    color: aliceblue;
+    font-size: 120%;
 }
 
 /* Página do Jogo*/
@@ -128,17 +142,27 @@ h2 {
     text-shadow: var(--text-shadow);
 }
 
+#menu-btn {
+    text-decoration: none;
+    color: darkslateblue;
+    font-weight: 600;
+    text-shadow: var(--text-shadow);
+
+}
+
 #teclado {
     font-size: 150%;
     color: aliceblue;
 }
 
-#dica:hover {
+#dica:hover,
+#menu-btn:hover {
     color: goldenrod;
     cursor: pointer;
     animation: jello;
     animation-duration: 1s;
 }
+
 
 #teclado:hover {
     color: goldenrod;
@@ -207,14 +231,14 @@ input {
 }
 
 #letras-erradas p {
-    font-size: 150%;
+    font-size: 135%;
     font-weight: 600;
     margin: 0.4rem;
     margin-top: 1.8rem;
     width: 2rem;
     text-align: center;
     border-radius: 50%;
-    border: 1px solid gold;
+    border: 4px outset goldenrod;
     animation: bounceInDown;
     animation-duration: 1s;
     transition: 500ms;
@@ -263,13 +287,14 @@ input {
     background: url(../img/perdeu.jpg) 50% 50%;
     background-size: cover;
 }
+
 .venceu {
     background: url(../img/venceu.jpg) 50% 50%;
     background-size: cover;
 }
 
 .modal-btns {
-    width: 25vh;
+    width: 100%;
     margin-bottom: 1rem;
     border-radius: 20px;
     padding: 1rem;
@@ -285,15 +310,20 @@ input {
     color: aliceblue;
 }
 
+#keyboard {
+    display: flex;
+    width: 50%;
+    margin: 0 auto;
+    position: sticky;
+    top: 100vh;
+}
+
 .simple-keyboard {
     display: none;
     width: 50%;
     margin-top: -4rem;
     text-align: center;
     transition: 700ms;
-    position: sticky;
-    top: 100vh;
-    width: 100vw;
     animation-duration: 1.4s;
 }
 
@@ -341,10 +371,11 @@ input {
     border-radius: 20px;
     font-size: 100%;
     font-weight: 600;
-    background-color: rgba(255, 217, 0, 0.904);
-    color: black;
+    background-color: rgb(212, 33, 33);
+    color: aliceblue;
     text-align: center;
     animation-duration: 1s;
+    width: 30%;
 }
 
 #add:hover {
@@ -371,12 +402,17 @@ input {
         background-position: 65%;
     }
 
-    .simple-keyboard {
-        display: inline-block;
+    #keyboard {
+        width: 100%;
         position: sticky;
         top: 100vh;
         width: 100vw;
     }
+
+    .simple-keyboard {
+        display: inline-block;
+    }
+
     #venceu-perdeu {
         width: 75%;
     }
@@ -390,8 +426,13 @@ input {
     }
 
     .modal-btns {
-        width: 65%;
-        height: 5vh;
+        width: 100%;
+        line-height: 1;
+    }
+
+    #add-word,
+    #add-tip {
+        width: 90%;
     }
 }
 
@@ -401,7 +442,7 @@ input {
     }
 
     .buttons {
-        width: 12rem;
+        width: 10rem;
     }
 
     #canvas,
