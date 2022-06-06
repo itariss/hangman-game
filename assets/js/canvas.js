@@ -5,7 +5,7 @@ let newColumn = [390, 285, 390, 55];
 let newColumnExtend = [310, 55, 390, 55];
 let newColumnExtend2 = [310, 70, 310, 55];
 let newHead = [10, 92, 20, 0, 2 * Math.PI];
-let newBody = [310, 170, 310, 115];
+let newBody = [310, 160, 310, 115];
 let leftEye = [301, 87, 5, 0, 2 * Math.PI];
 let rightEye = [318, 87, 5, 0, 2 * Math.PI];
 let nose = [310, 95, 1.5, 0, 2 * Math.PI];
@@ -13,11 +13,10 @@ let scar = [323, 76, 295, 103];
 let upperLip = [310, 82, 18, 0, 1 * Math.PI];
 let teethLine = [310, 85, 20, 0, 1 * Math.PI];
 let teeth = [295, 94, 295, 105];
-let body = [305, 100, 4, 60];
-let leftLeg = [312, 170, 295, 225];
-let rightLeg = [307, 170, 325, 225];
-let leftArm = [313, 125, 292, 140];
-let rightArm = [306, 125, 327, 140];
+let leftLeg = [310, 160, 295, 215];
+let rightLeg = [310, 160, 325, 215];
+let leftArm = [310, 125, 285, 150];
+let rightArm = [310, 125, 335, 150];
 
 function callFunc(func, piece) {
     func(piece);
@@ -60,9 +59,6 @@ function drawLineX(piece, func, nextPiece) {
     pencil.lineWidth = 5;
     pencil.lineCap = "round";
     pencil.lineJoin = "round";
-    pencil.strokeStyle = "aliceblue";
-    pencil.shadowColor = "black";
-    pencil.shadowBlur = 3;
 
     let draw = setInterval(() => {
         if (initPointX < pieceCoord[2]) {
@@ -130,14 +126,12 @@ function drawCircles(piece, style) {
 const drawHead = () => {
     let pieceCoord = newHead;
     pencil.lineWidth = 2.5;
-    pencil.fillStyle = "black";
-    pencil.strokeStyle = "black";
-    pencil.shadowColor = "darkred";
-    pencil.shadowBlur = 2;
+    pencil.shadowColor = "black";
+    pencil.shadowBlur = 1;
 
     let draw = setInterval(() => {
         if (pieceCoord[0] <= 310) {
-            pencil.clearRect(pieceCoord[0] - 36, pieceCoord[1] - 24, 45, 48);
+            pencil.clearRect(pieceCoord[0] - 32, pieceCoord[1] - 22, 45, 45);
             pencil.beginPath();
             pencil.arc(
                 pieceCoord[0],
@@ -168,7 +162,6 @@ function drawLeftDiagonals(piece, wich) {
     let initPointX = pieceCoord[0];
     let initPointY = pieceCoord[1];
     pencil.lineWidth = 3;
-    pencil.shadowBlur = 1;
 
     let draw = setInterval(() => {
         if (initPointX > pieceCoord[2] && initPointY < pieceCoord[3]) {
@@ -181,7 +174,7 @@ function drawLeftDiagonals(piece, wich) {
                 initPointX += 0.5;
                 initPointY += 1.5;
             } else {
-                initPointY += 0.5;
+                initPointY += 1;
                 initPointX += 1;
             }
         } else {
@@ -207,7 +200,7 @@ function drawRightDiagonals(piece, wich) {
                 initPointX -= 0.5;
                 initPointY += 1.5;
             } else {
-                initPointY += 0.5;
+                initPointY += 1;
                 initPointX -= 1;
             }
         } else {
