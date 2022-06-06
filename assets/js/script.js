@@ -9,15 +9,14 @@ const mostraDica = document.querySelector("#dica");
 const mostraTecladoVirtural = document.querySelector("#teclado");
 const tecladoVirtual = document.querySelector("#teclado-virtual");
 
-const re = new RegExp("^[a-zç/s]+$");
+const re = new RegExp("^[a-z/s]+$");
 
 const sounds = [
-    new Audio("../audio/beep-10.mp3"),
+    new Audio("../audio/button-30.mp3"),
     new Audio("../audio/coin-drop-1.mp3"),
     new Audio("../audio/fail-trombone-01.mp3"),
     new Audio("../audio/magic-chime-01.mp3"),
-    new Audio("../audio/winning.wav"),
-    new Audio("../audio/button-30.mp3")
+    new Audio("../audio/winning.wav")
 ];
 
 const Keyboard = window.SimpleKeyboard.default;
@@ -25,11 +24,12 @@ const Keyboard = window.SimpleKeyboard.default;
 const myKeyboard = new Keyboard({
     onKeyPress: button => onKeyPress(button),
     layout: {
-        default: ["q w e r t y u i o p", "a s d f g h j k l ç", "z x c v b n m"]
+        default: ["q w e r t y u i o p", "a s d f g h j k l", "z x c v b n m"]
     }
 });
 
 novasPalavras = JSON.parse(window.sessionStorage.getItem("novasPalavras"));
+gameDificult = JSON.parse(window.sessionStorage.getItem("dificult"));
 
 let palavras = [
     { nome: "azul", dica: "Cor" },
@@ -38,7 +38,7 @@ let palavras = [
     { nome: "serpente", dica: "Animal" },
     { nome: "navio", dica: "Transporte" },
     { nome: "laranja", dica: "Fruta" },
-    { nome: "tomate", dica: "Fruta" },
+    { nome: "banana", dica: "Fruta" },
     { nome: "jacare", dica: "Animal" },
     { nome: "coruja", dica: "Animal" },
     { nome: "skate", dica: "Transporte" },
@@ -46,27 +46,61 @@ let palavras = [
     { nome: "arroz", dica: "Comida" },
     { nome: "luneta", dica: "Objeto" }
 ];
+let dificult = 1;
 
 if (novasPalavras != undefined) {
     palavras = palavras.concat(novasPalavras);
+    console.log(palavras);
+}
+
+if (gameDificult != undefined) {
+    dificult = gameDificult;
+}
+
+if (dificult == 2) {
+    mostraDica.style.visibility = "hidden";
 }
 
 let sorteio = Math.floor(Math.random() * palavras.length);
 let palavraSorteada = palavras[sorteio].nome;
 let letras = palavraSorteada.split("");
+let attemptsLeft = 6;
 
+//Cria espaços para a palava secreta
 for (let i = 0; i < letras.length; i++) {
     let input = document.createElement("input");
     input.disabled = true;
     tabuleiro.appendChild(input);
+    tabuleiro.addEventListener("animationend", drawGallows, false);
 }
+
+function canListenKeyboard() {
+    tecladoVirtual.addEventListener("click", onKeyPress, true);
+    window.addEventListener("keydown", onKeyDown, true);
+}
+
+function drawGallows() {
+    if (dificult == 0) {
+        drawLineX(newBase);
+        attemptsLeft = 9;
+    }
+    if (dificult == 1) {
+        drawLineX(newBase, drawLineY, newColumn);
+        drawLineY(newColumnExtend2, "none", drawLineX, newColumnExtend);
+    }
+    if (dificult == 2) {
+        drawLineX(newBase, drawLineY, newColumn);
+        drawLineY(newColumnExtend2, "none", drawLineX, newColumnExtend);
+        setTimeout(drawHead, 1700);
+        attemptsLeft = 5;
+    }
+    setTimeout(canListenKeyboard, 2000);
+    tabuleiro.removeEventListener("animationend", drawGallows, false);
+}
+
 let erros = [];
 let acertos = [];
 let noDisplayKeyboard = true;
-
-tecladoVirtual.addEventListener("click", onKeyPress);
-
-window.addEventListener("keydown", onKeyDown);
 
 dica.addEventListener("click", () => {
     criaDica = document.createElement("p");
@@ -75,6 +109,7 @@ dica.addEventListener("click", () => {
 
     mostraDica.appendChild(criaDica);
 });
+
 teclado.addEventListener("click", () => {
     toogleDisplayKeyboard();
 });
@@ -125,50 +160,60 @@ function mainFunction(tecla) {
 
     if (!acertou) {
         mostraLetrasErradas(tecla);
-
-        if (erros.length == 1) {
-            desenhaForca(head);
-            mouth = true;
-            desenhaForca(upperLip);
-            desenhaForca(teethLine);
-            desenhaRetas(scar);
-            drawTeeth = true;
-            desenhaRetas(teeth);
-            headDone = true;
-            desenhaForca(leftEye);
-            desenhaForca(rightEye);
-            desenhaForca(nose);
-        }
-        if (erros.length == 2) {
-            desenhaForca(body);
-        }
-        if (erros.length == 3) {
-            desenhaForca(leftLeg);
-        }
-        if (erros.length == 4) {
-            desenhaForca(rightLeg);
-        }
-        if (erros.length == 5) {
-            desenhaForca(leftArm);
-        }
-        if (erros.length == 6) {
-            desenhaForca(rightArm);
+        attemptsLeft--;
+        switch (attemptsLeft) {
+            case 8:
+                drawLineY(newColumn);
+                break;
+            case 7:
+                drawLineX(newColumnExtend);
+                break;
+            case 6:
+                drawLineY(newColumnExtend2);
+                break;
+            case 5:
+                drawHead();
+                break;
+            case 4:
+                drawLineY(newBody, "body");
+                break;
+            case 3:
+                drawLeftDiagonals(leftLeg, "legs");
+                break;
+            case 2:
+                drawRightDiagonals(rightLeg, "legs");
+                break;
+            case 1:
+                drawLeftDiagonals(leftArm);
+                break;
+            case 0:
+                drawRightDiagonals(rightArm);
+            default:
+                break;
         }
     }
+    verifyEnd();
+}
 
+function verifyEnd() {
     if (acertos.length == letras.length) {
-        window.removeEventListener("click", onKeyPress, false);
-        window.removeEventListener("keydown", onKeyDown, false);
-        setTimeout("mostraJanela(`venceu`)", 1000);
-        setTimeout("playSounds(sounds[4])", 1000);
+        removeListenerAndKeyboard();
+        setTimeout("mostraJanela(`venceu`)", 1200);
+        setTimeout("playSounds(sounds[4])", 1200);
     }
-    if (erros.length == 6) {
+    if (attemptsLeft == 0) {
         mostraPalavra();
-        window.removeEventListener("click", onKeyPress, false);
-        window.removeEventListener("keydown", onKeyDown, false);
-        setTimeout("mostraJanela(`perdeu`)", 1000);
-        setTimeout("playSounds(sounds[2])", 1000);
+        removeListenerAndKeyboard();
+        setTimeout("mostraJanela(`perdeu`)", 1200);
+        setTimeout("playSounds(sounds[2])", 1200);
     }
+}
+
+function removeListenerAndKeyboard() {
+    setTimeout(() => {
+        tecladoVirtual.style.display = "none";
+    }, 900);
+    window.removeEventListener("keydown", onKeyDown, true);
 }
 
 function onKeyDown() {
@@ -212,104 +257,3 @@ function mostraPalavra() {
 function playSounds(sounds) {
     sounds.play();
 }
-
-/* Coordenadas para o canvas*/
-
-let base = [320, 280, 120, 5];
-let column = [385, 50, 5, 235];
-let columExtend = [385, 50, -80, 5];
-let columExtend2 = [305, 50, 5, 20];
-let head = [307, 90, 20, 0, 2 * Math.PI];
-
-let headDone = false;
-let mouth = false;
-
-let leftEye = [299, 87, 5, 0, 2 * Math.PI];
-let rightEye = [315, 87, 5, 0, 2 * Math.PI];
-let nose = [307, 95, 1.5, 0, 2 * Math.PI];
-let scar = [323, 76, 293, 106];
-let upperLip = [307, 82, 18, 0, 1 * Math.PI];
-let teethLine = [307, 84, 20, 0, 1 * Math.PI];
-let teeth = [292, 94, 292, 105];
-let drawTeeth = false;
-let body = [305, 110, 4, 60];
-let leftLeg = [307, 170, 285, 225];
-let rightLeg = [307, 170, 325, 225];
-let leftArm = [307, 125, 285, 165];
-let rightArm = [307, 125, 325, 165];
-
-function desenhaForca(piece) {
-    let pieceCoordinate = piece;
-    if (erros.length == 0 || erros.length == 2) {
-        pencil.closePath();
-        pencil.fillRect(
-            pieceCoordinate[0],
-            pieceCoordinate[1],
-            pieceCoordinate[2],
-            pieceCoordinate[3]
-        );
-    } else if (erros.length == 1) {
-        if (mouth) {
-            pencil.lineWidth = 1;
-        } else {
-            pencil.lineWidth = 4;
-        }
-
-        pencil.beginPath();
-        pencil.arc(
-            pieceCoordinate[0],
-            pieceCoordinate[1],
-            pieceCoordinate[2],
-            pieceCoordinate[3],
-            pieceCoordinate[4]
-        );
-        if (headDone) {
-            pencil.fill();
-        } else {
-            pencil.stroke();
-        }
-    } else if (erros.length > 2) {
-        pencil.lineWidth = 3;
-
-        pencil.beginPath();
-        pencil.moveTo(pieceCoordinate[0], pieceCoordinate[1]);
-        pencil.lineTo(pieceCoordinate[2], pieceCoordinate[3]);
-        pencil.closePath();
-        pencil.stroke();
-    }
-}
-
-function desenhaRetas(piece) {
-    let pieceCoordinate = piece;
-
-    if (drawTeeth) {
-        pencil.lineWidth = 0.4;
-        for (let j = 0; j <= 6; j++) {
-            pencil.beginPath();
-            pencil.moveTo(pieceCoordinate[0], pieceCoordinate[1]);
-            pencil.lineTo(pieceCoordinate[2], pieceCoordinate[3]);
-            pencil.closePath();
-            pencil.stroke();
-            pieceCoordinate[0] = pieceCoordinate[0] + 5;
-            pieceCoordinate[1] = pieceCoordinate[1] + 2;
-            pieceCoordinate[2] = pieceCoordinate[0];
-            pieceCoordinate[3] = pieceCoordinate[3] + 2;
-            if (j >= 3) {
-                pieceCoordinate[1] = pieceCoordinate[1] - 4;
-                pieceCoordinate[3] = pieceCoordinate[3] - 4;
-            }
-        }
-    } else {
-        pencil.lineWidth = 1;
-
-        pencil.beginPath();
-        pencil.moveTo(pieceCoordinate[0], pieceCoordinate[1]);
-        pencil.lineTo(pieceCoordinate[2], pieceCoordinate[3]);
-        pencil.closePath();
-        pencil.stroke();
-    }
-}
-desenhaForca(base);
-desenhaForca(column);
-desenhaForca(columExtend);
-desenhaForca(columExtend2);
